@@ -1,0 +1,52 @@
+<div class="wrapper">
+    <div class="calc-container">
+      <h3>Simulador de CDB</h3>
+      <form [formGroup]="cdbCalculateForm" (ngSubmit)="cdbCalculator()">
+        <div class="input-group">
+          <label for="InitialValue">Investimento Inicial</label>
+          <input
+            type="number"
+            id="InitialValue"
+            formControlName="InitialValue"
+            placeholder="Informe o valor"
+          />
+          <div
+            *ngIf="cdbCalculateForm.get('InitialValue')!.invalid && cdbCalculateForm.get('InitialValue')!.touched"
+            class="msg-erro"
+          >
+            O valor deve ser maior que zero.
+          </div>
+        </div>
+        <div class="input-group">
+          <label for="DeadlineMonths">Prazo (meses)</label>
+          <input
+            type="number"
+            id="DeadlineMonths"
+            formControlName="DeadlineMonths"
+            placeholder="Informe o prazo em meses"
+          />
+          <div
+            *ngIf="cdbCalculateForm.get('DeadlineMonths')!.invalid && cdbCalculateForm.get('DeadlineMonths')!.touched"
+            class="msg-erro"
+          >
+            O prazo mínimo é de 1 mês.
+          </div>
+        </div>
+        <button type="submit" class="btn-calcular" [disabled]="cdbCalculateForm.invalid">
+          Simular
+        </button>
+      </form>
+  
+      <div *ngIf="result" class="result-box">
+        <h4>Resumo</h4>
+        <p>
+          <strong>Montante Bruto:</strong>
+          {{ result.grossValue | currency : "BRL" : "symbol" : "1.2-2" : "pt-BR" }}
+        </p>
+        <p>
+          <strong>Montante Líquido:</strong>
+          {{ result.netValue| currency : "BRL" : "symbol" : "1.2-2" : "pt-BR" }}
+        </p>
+      </div>
+    </div>
+  </div>

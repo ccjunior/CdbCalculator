@@ -1,4 +1,8 @@
 ﻿namespace CdbCalculator.API.Dtos
 {
-    public class CdbResponseDto(decimal GrossValue, decimal LiquidValue);
+    public class CdbResponseDto
+    {
+        public decimal GrossValue { get; set; }
+        public decimal NetValue { get; set; }
+    }
 }

@@ -1,5 +1,5 @@
 ﻿using CdbCalculator.API.Dtos;
-using CdbCalculator.API.Services.Impl;
+using CdbCalculator.API.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CdbCalculator.API.Controllers
@@ -9,13 +9,8 @@ namespace CdbCalculator.API.Controllers
     public class CdbController : ControllerBase
     {
         [HttpPost("calculate")]
-        public IActionResult Calcular([FromServices] CdbService _cdbService,  [FromBody] CdbRequestDto request)
+        public IActionResult Calcular([FromServices] ICdbService _cdbService,  [FromBody] CdbRequestDto request)
         {
-            if (request.InitialValue <= 0 || request.DeadlineMonths < 2)
-            {
-                return BadRequest("O valor inicial deve ser positivo e o prazo deve ser maior que 1 mês.");
-            }
-
             var resultado = _cdbService.InvestCalculate(request);
             
             return Ok(resultado);
