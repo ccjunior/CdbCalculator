@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CdbCalculator.API", "src\Cd
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "CdbCalculator.Web", "src\CdbCalculator.Web\CdbCalculator.Web.esproj", "{E1D8B72E-9C67-4696-998F-CA72A608CD13}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CdbCalculator.tests", "tests\CdbCalculator.tests\CdbCalculator.tests.csproj", "{79871CF4-3D5E-438D-9A5C-349FEA51B33F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{E1D8B72E-9C67-4696-998F-CA72A608CD13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1D8B72E-9C67-4696-998F-CA72A608CD13}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E1D8B72E-9C67-4696-998F-CA72A608CD13}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{79871CF4-3D5E-438D-9A5C-349FEA51B33F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79871CF4-3D5E-438D-9A5C-349FEA51B33F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79871CF4-3D5E-438D-9A5C-349FEA51B33F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79871CF4-3D5E-438D-9A5C-349FEA51B33F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

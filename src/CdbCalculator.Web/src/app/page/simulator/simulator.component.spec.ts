@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { HomeComponent } from './home.component';
 import { CalculatorService } from '../../services/calculator.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { of } from 'rxjs';
+import { SimulatorComponent } from './simulator.component';
 
 describe('HomeComponent', () => {
-  let component: HomeComponent;
-  let fixture: ComponentFixture<HomeComponent>;
+  let component: SimulatorComponent;
+  let fixture: ComponentFixture<SimulatorComponent>;
   let cdbService: jasmine.SpyObj<CalculatorService>;
 
   beforeEach(async () => {
     const cdbServiceSpy = jasmine.createSpyObj('CalculatorService', ['Calculator']);
 
     await TestBed.configureTestingModule({
-      declarations: [HomeComponent],
+      declarations: [SimulatorComponent],
       imports: [ReactiveFormsModule],
       providers: [
         { provide: CalculatorService, useValue: cdbServiceSpy },
@@ -22,7 +22,7 @@ describe('HomeComponent', () => {
       ],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(HomeComponent);
+    fixture = TestBed.createComponent(SimulatorComponent);
     component = fixture.componentInstance;
     cdbService = TestBed.inject(CalculatorService) as jasmine.SpyObj<CalculatorService>;
     fixture.detectChanges();
