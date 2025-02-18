@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { HomeComponent } from './page/home/home.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   standalone: false,
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'CdbCalculator.Web';
+  title = 'CDB Simulator';
 }
