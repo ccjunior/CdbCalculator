@@ -1,0 +1,90 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    background-color: #f4f4f4;
+    padding: 20px;
+  }
+  
+  .calc-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  /* Estiliza os grupos de inputs */
+  .input-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .input-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .input-group input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .input-group input:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  /* Mensagens de erro */
+  .msg-erro {
+    color: #d9534f;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  /* Botão de simulação */
+  .btn-calcular {
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .btn-calcular:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .btn-calcular:hover:not(:disabled) {
+    background-color: #0056b3;
+  }
+  
+  /* Estiliza a caixa de resultados */
+  .result-box {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 6px;
+    background: #f8f9fa;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .result-box h4 {
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .result-box p {
+    font-size: 16px;
+    margin: 5px 0;
+  }
+  

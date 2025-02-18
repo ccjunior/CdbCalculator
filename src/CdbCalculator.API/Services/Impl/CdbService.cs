@@ -19,7 +19,11 @@ namespace CdbCalculator.API.Services.Impl
             decimal tax = TaxCalculate(request.DeadlineMonths, endValue - request.InitialValue);
             decimal netValue = endValue - tax;
 
-            return new CdbResponseDto(Math.Round(endValue, 2), Math.Round(netValue, 2));
+            return new CdbResponseDto
+            {
+                GrossValue = Math.Round(endValue, 2),
+                NetValue = Math.Round(netValue, 2)
+            };
         }
 
         private decimal TaxCalculate(int deadline, decimal yield)

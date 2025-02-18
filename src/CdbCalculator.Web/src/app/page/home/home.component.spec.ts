@@ -1,0 +1,82 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { HomeComponent } from './home.component';
+import { CalculatorService } from '../../services/calculator.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { of } from 'rxjs';
+
+describe('HomeComponent', () => {
+  let component: HomeComponent;
+  let fixture: ComponentFixture<HomeComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [HomeComponent]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(HomeComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
+
+describe('HomeComponent', () => {
+  let component: HomeComponent;
+  let fixture: ComponentFixture<HomeComponent>;
+  let cdbService: jasmine.SpyObj<CalculatorService>;
+
+  beforeEach(async () => {
+    const cdbServiceSpy = jasmine.createSpyObj('CalculatorService', ['Calculator']);
+
+    await TestBed.configureTestingModule({
+      declarations: [HomeComponent],
+      imports: [ReactiveFormsModule],
+      providers: [
+        { provide: CalculatorService, useValue: cdbServiceSpy },
+        provideHttpClientTesting(),
+      ],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(HomeComponent);
+    component = fixture.componentInstance;
+    cdbService = TestBed.inject(CalculatorService) as jasmine.SpyObj<CalculatorService>;
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should have a valid form when inputs are valid', () => {
+    component.cdbCalculateForm.controls['InitialValue'].setValue(1000);
+    component.cdbCalculateForm.controls['DeadlineMonths'].setValue(12);
+    expect(component.cdbCalculateForm.valid).toBeTrue();
+  });
+
+  it('should have an invalid form when inputs are invalid', () => {
+    component.cdbCalculateForm.controls['initialValue'].setValue(null);
+    component.cdbCalculateForm.controls['months'].setValue(null);
+    expect(component.cdbCalculateForm.invalid).toBeTrue();
+  });
+
+  it('should call calculateCDB and set result when form is valid', () => {
+    const mockResponse = { grossValue: 1123.08, netValue: 1098.46 };
+    cdbService.Calculator.and.returnValue(of(mockResponse));
+
+    component.cdbCalculateForm.controls['initialValue'].setValue(1000);
+    component.cdbCalculateForm.controls['months'].setValue(12);
+    component.cdbCalculator();
+
+    expect(cdbService.Calculator).toHaveBeenCalledWith({
+      InitialValue: 1000,
+      DeadlineMonths: 12,
+    });
+    expect(component.result).toEqual(mockResponse);
+  });
+});
+
